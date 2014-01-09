@@ -3,7 +3,6 @@
 namespace BeSimple\SsoAuthBundle\Sso;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use BeSimple\SsoAuthBundle\Security\Core\Authentication\Token\SsoToken;
 use Buzz\Client\ClientInterface;
 
