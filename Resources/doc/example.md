@@ -36,7 +36,7 @@ Create a firewall
             logout_action: false 		# BeSimpleSsoAuthBundle:TrustedSso:logout
             create_users: true
             created_users_roles: [ROLE_USER ]
-            check_path: /
+            check_path: /login_check            # Don't need any action in any controller
 
 
 Create all routes (mandatory even if there is no controller)
@@ -60,7 +60,18 @@ Example with Propel:
                 class: Altern\CdtBundle\Model\User
                 property: username
 
-The propel User Class must implement \Symfony\Component\Security\Core\User\UserInterface
+The propel (or Doctrine) User Class must implement \Symfony\Component\Security\Core\User\UserInterface
+and \Symfony\Component\Security\Core\User\EquatableInterface.
+You must define the methode "isEqualTo", like this :
+    
+    public function isEqualTo(\Symfony\Component\Security\Core\User\UserInterface $user) {
+        return $user->getUsername() === $this->getUsername();
+    }
+
+This will avoid this type of error : "The page isn't redirecting properly" and
+long days spent to found why the f**k this doesn't work...
+
+
 
 Customize the "Username does not exist" error page
 --------------------------------------------------
