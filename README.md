@@ -14,5 +14,5 @@ It works in two ways:
 Only CAS protocol is implemented for now, many other are planned.
 
 
--   [Read documentation](https://github.com/BeSimple/BeSimpleSsoAuthBundle/blob/master/Resources/doc/index.md)
--   [See the license](https://github.com/BeSimple/BeSimpleSsoAuthBundle/blob/master/Resources/meta/LICENSE)
+-   [Read documentation](Resources/doc/index.md)
+-   [See the license](Resources/meta/LICENSE)
