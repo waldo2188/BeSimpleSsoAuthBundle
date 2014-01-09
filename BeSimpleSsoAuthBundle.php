@@ -5,7 +5,6 @@ namespace BeSimple\SsoAuthBundle;
 use BeSimple\SsoAuthBundle\DependencyInjection\Security\Factory\TrustedSsoFactory;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Kernel;
 use BeSimple\SsoAuthBundle\DependencyInjection\Compiler\FactoryPass;
 
 /**

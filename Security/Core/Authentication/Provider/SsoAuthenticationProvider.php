@@ -10,9 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\AuthenticationServiceException;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
-use BeSimple\SsoAuthBundle\Sso\Manager;
 use BeSimple\SsoAuthBundle\Security\Core\Authentication\Token\SsoToken;
-use BeSimple\SsoAuthBundle\Sso\ValidationInterface;
 use BeSimple\SsoAuthBundle\Security\Core\User\UserFactoryInterface;
 
 class SsoAuthenticationProvider implements AuthenticationProviderInterface

@@ -3,7 +3,6 @@
 namespace BeSimple\SsoAuthBundle\Sso;
 
 use BeSimple\SsoAuthBundle\Security\Core\Authentication\Token\SsoToken;
-use BeSimple\SsoAuthBundle\Exception\InvalidConfigurationException;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Buzz\Message\Request as BuzzRequest;
 use Buzz\Client\ClientInterface;

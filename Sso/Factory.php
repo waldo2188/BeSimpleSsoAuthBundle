@@ -2,7 +2,6 @@
 
 namespace BeSimple\SsoAuthBundle\Sso;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Buzz\Client\ClientInterface;
 use BeSimple\SsoAuthBundle\Exception\ConfigNotFoundException;

@@ -3,7 +3,6 @@
 namespace BeSimple\SsoAuthBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class Controller extends ContainerAware
 {

@@ -3,7 +3,6 @@
 namespace BeSimple\SsoAuthBundle\Sso\Cas;
 
 use BeSimple\SsoAuthBundle\Sso\AbstractProtocol;
-use BeSimple\SsoAuthBundle\Sso\ProtocolInterface;
 use BeSimple\SsoAuthBundle\Exception\InvalidConfigurationException;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Buzz\Message\Request as BuzzRequest;

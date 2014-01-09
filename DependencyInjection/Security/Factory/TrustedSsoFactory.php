@@ -3,7 +3,6 @@
 namespace BeSimple\SsoAuthBundle\DependencyInjection\Security\Factory;
 
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
-use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * @author: Jean-François Simon <contact@jfsimon.fr>

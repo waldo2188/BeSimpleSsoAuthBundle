@@ -3,7 +3,6 @@
 namespace BeSimple\SsoAuthBundle\Sso\Cas;
 
 use BeSimple\SsoAuthBundle\Sso\AbstractServer;
-use BeSimple\SsoAuthBundle\Sso\ServerInterface;
 use Buzz\Message\Request;
 
 /**
