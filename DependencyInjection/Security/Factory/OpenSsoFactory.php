@@ -3,6 +3,7 @@
 namespace BeSimple\SsoAuthBundle\DependencyInjection\Security\Factory;
 
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @author: Jean-François Simon <contact@jfsimon.fr>
@@ -24,7 +25,7 @@ class OpenSsoFactory extends AbstractSsoFactory
         return 'security.authentication.listener.open_sso';
     }
 
-    protected function createEntryPoint($container, $id, $config, $defaultEntryPoint)
+    protected function createEntryPoint(ContainerBuilder $container, $id, $config, $defaultEntryPoint)
     {
         $entryPointId = 'security.authentication.open_sso_entry_point.'.$id;
 
