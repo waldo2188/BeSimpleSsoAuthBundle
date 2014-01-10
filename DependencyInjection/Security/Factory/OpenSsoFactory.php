@@ -37,7 +37,7 @@ class OpenSsoFactory extends AbstractSsoFactory
         return $entryPointId;
     }
 
-    protected function createListener($container, $id, $config, $userProvider)
+    protected function createListener(ContainerBuilder $container, $id, $config, $userProvider)
     {
         $listenerId = parent::createListener($container, $id, $config, $userProvider);
 
