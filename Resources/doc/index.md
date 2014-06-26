@@ -23,3 +23,4 @@ Some notes
 
 -   [Some SSO protocols](protocols.md)
 -   [Example] (example.md)
+-   [Example with multiple auth system] (example_multi_auth.md)

@@ -14,6 +14,7 @@ class TrustedSsoFactory extends AbstractSsoFactory
         parent::__construct();
 
         $this->addOption('manager');
+        $this->addOption('force_login_path');
     }
 
     public function getKey()

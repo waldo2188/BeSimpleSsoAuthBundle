@@ -48,7 +48,7 @@ class TrustedSsoAuthenticationEntryPoint implements AuthenticationEntryPointInte
         $action  = $this->config['login_action'];
         $manager = $this->factory->getManager($this->config['manager'], $request->getUriForPath($this->config['check_path']));
 
-        if ($action) {
+        if ($action && ! $this->isSameRoute($request, $this->config['force_login_path'])) {
             $subRequest = $request->duplicate(null, null, array(
                 '_controller' => $action,
                 'manager'   => $manager,
@@ -59,5 +59,10 @@ class TrustedSsoAuthenticationEntryPoint implements AuthenticationEntryPointInte
         }
 
         return new RedirectResponse($manager->getServer()->getLoginUrl());
+    }
+    
+    protected function isSameRoute(Request $request, $path)
+    {
+        return $request->getPathInfo() === $path;
     }
 }

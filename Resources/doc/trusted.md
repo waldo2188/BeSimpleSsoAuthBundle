@@ -30,6 +30,7 @@ Other optional configuration entries are:
 -   `use_referer` (default false):
 -   `failure_path` (default null): go to this path on failure.
 -   `failure_forward` (default false): forward (true) or redirect (false) to failure path.
+-   `force_login_path` (default null): this URL trigger BeSimpleSsoAuthBundle for redirect the user to SSO login form when you have set `login_action`
 
 
 **An example in YAML format:**
