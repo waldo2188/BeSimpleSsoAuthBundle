@@ -5,6 +5,7 @@ namespace BeSimple\SsoAuthBundle\Security\Core\Authentication\Provider;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\User\ChainUserProvider;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -115,8 +116,12 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
         try {
             $user = $this->retrieveUser($username);
         } catch (UsernameNotFoundException $notFound) {
-            if ($this->createUsers && $this->userProvider instanceof UserFactoryInterface) {
+
+            if ($this->createUsers && ($this->userProvider instanceof UserFactoryInterface 
+                        || $this->userProvider instanceof ChainUserProvider)) {
+                
                 $user = $this->createUser($username, $attributes);
+
             } elseif ($this->hideUserNotFound) {
                 throw new BadCredentialsException('Bad credentials', 0, $notFound);
             } else {
@@ -161,12 +166,22 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
      */
     protected function createUser($username, array $attributes = array())
     {
-        if (!$this->userProvider instanceof UserFactoryInterface) {
+        $userProvider = null;
+        
+        if($this->userProvider instanceof ChainUserProvider) {
+            foreach($this->userProvider->getProviders() as $userProviderTmp) {
+                if($userProviderTmp instanceof UserFactoryInterface) {
+                    $userProvider = $userProviderTmp;
+                }
+            }
+        }
+        
+        if (!$userProvider instanceof UserFactoryInterface) {
             throw new AuthenticationServiceException('UserProvider must implement UserFactoryInterface to create unknown users.');
         }
 
         try {
-            $user = $this->userProvider->createUser($username, $this->createdUsersRoles, $attributes);
+            $user = $userProvider->createUser($username, $this->createdUsersRoles, $attributes);
 
             if (!$user instanceof UserInterface) {
                 throw new AuthenticationServiceException('The user provider must create an UserInterface object.');
@@ -177,4 +192,5 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
 
         return $user;
     }
+    
 }
