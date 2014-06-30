@@ -39,6 +39,12 @@ class Configuration implements ConfigurationInterface
 
         $this->setComponentDefinition($serverDefinition, 'protocol');
         $this->setComponentDefinition($serverDefinition, 'server');
+        
+        $serverDefinition
+                ->children()
+                ->scalarNode("proxy")
+                ->example("Set an IP proxy, like 172.1.1.2:8080")
+                ->end();
 
         return $treeBuilder;
     }
