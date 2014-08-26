@@ -46,8 +46,6 @@ class Configuration implements ConfigurationInterface
     /**
      * @param \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $serverDefinition
      * @param string                                                           $name
-     *
-     * todo: validate component configuration
      */
     private function setComponentDefinition(ArrayNodeDefinition $serverDefinition, $name)
     {
