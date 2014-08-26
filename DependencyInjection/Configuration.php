@@ -12,19 +12,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * @var bool
-     */
-    private $debug;
-
-    /**
-     * @param bool $debug
-     */
-    public function  __construct($debug)
-    {
-        $this->debug = (Boolean) $debug;
-    }
-
-    /**
      * @return TreeBuilder
      */
     public function getConfigTreeBuilder()
