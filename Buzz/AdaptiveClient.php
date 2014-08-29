@@ -26,4 +26,9 @@ class AdaptiveClient implements ClientInterface
     {
         $this->client->send($request, $response, $this->options);
     }
+    
+    public function setProxy($proxy)
+    {
+        $this->client->setProxy($proxy);
+    }
 }

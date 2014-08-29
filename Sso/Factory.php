@@ -102,6 +102,8 @@ class Factory
 
         $config = $this->container->getParameter($parameter);
         $config['server']['check_url'] = $checkUrl;
+        
+        $this->defineClientParameters($config);
 
         return new Manager($this->getServer($config['server']), $this->getProtocol($config['protocol']), $this->client);
     }
@@ -141,4 +143,12 @@ class Factory
 
         return $this->container->get($this->protocols[$id])->setConfig($config);
     }
+
+    private function defineClientParameters($config)
+    {
+        if (isset($config['proxy'])) {
+            $this->client->setProxy($config['proxy']);
+        }
+    }
+
 }

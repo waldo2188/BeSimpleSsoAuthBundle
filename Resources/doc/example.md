@@ -12,6 +12,7 @@ In config.yml:
 
         be_simple_sso_auth:
             admin_sso:
+                proxy: 172.0.0.1:8080 # by default : null
                 protocol:
                     id: cas
                     version: 2
