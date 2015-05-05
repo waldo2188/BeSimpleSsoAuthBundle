@@ -113,13 +113,14 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
      */
     protected function provideUser($username, array $attributes = array())
     {
+
         try {
             $user = $this->retrieveUser($username);
         } catch (UsernameNotFoundException $notFound) {
 
-            if ($this->createUsers && ($this->userProvider instanceof UserFactoryInterface 
+            if ($this->createUsers && ($this->userProvider instanceof UserFactoryInterface
                         || $this->userProvider instanceof ChainUserProvider)) {
-                
+
                 $user = $this->createUser($username, $attributes);
 
             } elseif ($this->hideUserNotFound) {
@@ -127,6 +128,7 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
             } else {
                 throw $notFound;
             }
+
         }
 
         return $user;
@@ -167,15 +169,17 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
     protected function createUser($username, array $attributes = array())
     {
         $userProvider = null;
-        
+
         if($this->userProvider instanceof ChainUserProvider) {
             foreach($this->userProvider->getProviders() as $userProviderTmp) {
                 if($userProviderTmp instanceof UserFactoryInterface) {
                     $userProvider = $userProviderTmp;
                 }
             }
+        } elseif($this->userProvider instanceof UserProviderInterface) {
+            $userProvider = $this->userProvider;
         }
-        
+
         if (!$userProvider instanceof UserFactoryInterface) {
             throw new AuthenticationServiceException('UserProvider must implement UserFactoryInterface to create unknown users.');
         }
@@ -192,5 +196,5 @@ class SsoAuthenticationProvider implements AuthenticationProviderInterface
 
         return $user;
     }
-    
+
 }
